@@ -295,10 +295,11 @@ button{
 }
 
 .Nuevomediform {
-  width: min(580px, 92%);
-  margin: 3rem auto;
+  width: min(720px, 92%);
+  margin: 140px auto 40px;
   padding: 2rem 1.4rem 1.4rem;
   background: var(--tarjeta);
+  color: var(--texto);
   border-radius: 14px;
 }
 
@@ -312,6 +313,7 @@ button{
 }
 
 .Nuevomediform form {
+    margin-top: 0;
   display: grid;
   grid-template-columns: 1.7fr 1fr;
   column-gap: 24px;
@@ -324,12 +326,12 @@ button{
 .Campoentrada:nth-of-type(4) { grid-row: 4; }
 
 .Campoentrada,
-.Nuevomediform form > label,
+.Nuevomediform form > label:not(.btnFoto),
 .Nuevomediform form > select {
   grid-column: 1;
 }
 
-.Nuevomediform label {
+.Nuevomediform label:not(.btnFoto) {
   display: block;
   margin-bottom: 3px;
   font-size: 0.82rem;
@@ -907,9 +909,9 @@ a.filaONG:hover {
    Se definieron con colores de tu propia paleta; ajústalas a tu gusto. */
 :root {
     --fondo: #224251;
-    --tarjeta: #224251;
-    --azul: #50CBE7;
-    --borde: #50CBE7;
+    --tarjeta: #C1C3CB;
+    --azul: #3B4BDB;
+    --borde: #888;
     --rojo: #F24B4B;
     --texto: #000;
 }
@@ -927,11 +929,12 @@ a.filaONG:hover {
 .listaMedicamentos > .mensajeAviso { grid-column: 1 / -1; margin: 0; }
 .panelAdmin .mensajeError,
 .tablaUsuarios .mensajeError,
-.modalCaja .mensajeError { color: #b3261e; }
+.modalCaja .mensajeError,
+.Nuevomediform .mensajeError{color: #b3261e;}
 .panelDonacion .mensajeError { text-align: center; }
 
 /* Formulario de medicamento */
-.Nuevomediform .errorFoto { color: #ff9a9a; }
+.Nuevomediform .errorFoto { color: #b3261e; }
 .Nuevomediform form > .mensajeError { grid-column: 1 / -1; grid-row: 9; }
 .Nuevomediform form > .enlaceCancelar { grid-column: 1 / -1; grid-row: 10; justify-self: center; margin-top: 12px; }
 .Nuevomediform > .mensajeError { margin-bottom: 12px; }
