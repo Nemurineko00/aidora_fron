@@ -21,7 +21,6 @@ export default function Login() {
     setEnviando(true);
     try {
       await iniciarSesion(correo, contrasena);
-      // Al conectar el backend: según usuario.rol ir a /admin, /recepcionONG o /home
       router.push("/home");
     } catch (err) {
       setError(err.message);

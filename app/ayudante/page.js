@@ -13,7 +13,6 @@ export default function RegistrarAyudante() {
   const [error, setError] = useState("");
   const [enviando, setEnviando] = useState(false);
 
-  // Si ya hay un ayudante registrado, se muestra para poder cambiarlo
   useEffect(() => {
     obtenerAyudante()
       .then((ayudante) => {

@@ -963,11 +963,9 @@ a.filaONG:hover {
 }
 .tarjeta { align-items: flex-start; }
 
-/* Paneles de administración */
 .itemHistorial { padding: 4px 0; font-size: 0.75rem; border-bottom: 1px solid #aaa; }
 .tarjetaReporte + .tarjetaReporte { margin-top: 8px; }
 
-/* Ventana de reporte */
 .modalFondo {
     position: fixed;
     inset: 0;
