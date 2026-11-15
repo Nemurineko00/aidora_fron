@@ -62,7 +62,7 @@ export default function HomeAdmin() {
             </div>
           ))}
 
-          {cargando && <p className="sinResultados">Cargando..</p>}
+          {cargando && <p className="sinResultados">Cargando...</p>}
           {!cargando && usuarios.length === 0 && !error && <p className="sinResultados">No hay usuarios.</p>}
         </section>
       </main>
