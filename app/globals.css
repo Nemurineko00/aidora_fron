@@ -1,0 +1,1005 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #224251;
+    color: #E0DDE1;
+    margin: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    padding: 14px 32px;
+    background-color: transparent;
+}
+
+header nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+footer {
+    width: 100%;
+    height: 180px;
+    background-color: #224251;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 48px 50px;
+}
+
+footer h3 {
+    color: #3AC3B5;
+}
+
+footer p {
+    font-size: 15px;
+    color: #E0DDE1;
+}
+
+form{
+    margin-top: 80px;
+}
+
+a{
+    text-decoration: none;
+    color: #3AC3B5;
+}
+
+
+button{
+    margin-top: 20px;
+}
+
+.logoLoggin {
+    display: flex;
+    padding: 280px;
+    gap: 12px;
+    text-decoration: none;
+    color: #E0DDE1;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #E0DDE1;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.logo h2 {
+    font-weight: 300;
+    letter-spacing: .15em;
+}
+
+.videoFondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.tituloGrande {
+    color: #E0DDE1;
+    font-size: 70px;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.tituloMasGrande {
+    color: #E0DDE1;
+    font-size: 110px;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+    margin: 0; 
+}
+
+.seccion-index {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 80px;
+    overflow: hidden;
+    margin-right: auto;
+    text-align: center;
+    padding: 14px 32px;
+}
+
+.seccion-index p {
+    position: relative;
+    z-index: 1;
+}
+
+.IniciarSesion {
+    background-color: rgb(34, 66, 81);
+    color: rgb(224, 221, 225);
+    font-size: 18px;
+    border: 1px solid rgb(80, 203, 231);
+    border-radius: 15px;
+    padding: 13px 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.btnSesion {
+    background-color: #224251;
+    color: #E0DDE1;
+    border: 1px solid #50CBE7;
+    border-radius: 15px;
+    padding: 10px 22px;
+    font-size: 15px;
+}
+
+.descripcion {
+    background: #647a85;
+    text-align: center;
+    margin-top: 0px;
+    width: 100%;
+    height: 720px;
+    display: flex;
+    padding: 14px 32px;
+}
+
+.columnaUno {
+    width: 70%;
+    float: left;
+    padding: 20px;
+    margin-top: 7rem;
+}
+
+.columnaDos {
+    width: 60%;
+    float: left;
+    margin-top: 6rem;
+}
+
+.parrafo {
+    font-size: 20px;
+}
+
+.columna-login {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 700px;
+    height: 100vh; 
+    background-color: rgba(69, 96, 108, .97);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    border-radius: 80px;
+    border: 1px solid #50CBE7;
+}
+
+.columna-login form {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.formulario {
+    margin: 20px 0 !important;
+    text-align: left;
+}
+
+.columna-login input {
+    height: 40px;
+    width: 100%;
+    background-color: #224251;
+    color: #E0DDE1;
+    border: 1px solid #50CBE7;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+.bloqueFromulario {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btnSesion {
+    display: inline-block;
+}
+
+.headerHome {
+    background-color: #E0DDE1;
+}
+
+.headerHome.logo, .headerHome h2 {
+    color: black;
+}
+
+.headerHome img {
+    height: 80px;
+}
+
+.listaMedicamentos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    padding: 120px 20px 20px;
+}
+
+.tarjeta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 10px;
+    border-radius: 12px;
+    background: #50CBE7;
+    color: #224251;
+}
+
+.tarjetaImagen {
+    background-color: rgba(224, 221, 225, 0.6);
+    border-radius: 18px;
+    padding: 14px 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjetaInfo {
+    font-size: 20px;
+}
+
+.btnAgregarMedeicamento {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: none;
+    background-color: #E0DDE1;
+    color: black;
+    font-size: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.Nuevomediform {
+  width: min(580px, 92%);
+  margin: 3rem auto;
+  padding: 2rem 1.4rem 1.4rem;
+  background: var(--tarjeta);
+  border-radius: 14px;
+}
+
+.Nuevomediform h1 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.Nuevomediform form {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  column-gap: 24px;
+  align-content: start;
+}
+
+.Campoentrada:nth-of-type(1) { grid-row: 1; }
+.Campoentrada:nth-of-type(2) { grid-row: 2; }
+.Campoentrada:nth-of-type(3) { grid-row: 3; }
+.Campoentrada:nth-of-type(4) { grid-row: 4; }
+
+.Campoentrada,
+.Nuevomediform form > label,
+.Nuevomediform form > select {
+  grid-column: 1;
+}
+
+.Nuevomediform label {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.Nuevomediform form > label[for="Puntoentrega"] { grid-row: 5; }
+.Nuevomediform form > select { grid-row: 6; }
+
+.Campoentrada input,
+.Nuevomediform select {
+  width: 100%;
+  height: 32px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.Campoentrada input:focus,
+.Nuevomediform select:focus {
+  outline: 2px solid var(--azul);
+  outline-offset: 1px;
+}
+
+.NotaRS {
+  margin: 0 0 18px;
+  padding: 14px 18px;
+  background: var(--rojo);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.Nuevomediform select {
+  appearance: none;
+  padding-right: 44px;
+  background: #fff
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='12'><polygon points='0,0 30,0 15,12'/></svg>")
+    no-repeat right 12px center;
+  background-size: 28px 11px;
+  cursor: pointer;
+}
+
+.Nuevomediform select:invalid {
+  color: #8a8a8a;
+  font-weight: 700;
+}
+.Nuevomediform select option {
+  color: var(--texto);
+  font-weight: 400;
+}
+
+.previewFoto {
+  grid-column: 2;
+  grid-row: 1 / 5;
+  margin-top: 1.5rem;    
+  margin-bottom: 1.6rem;
+  min-height: 160px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #8a8a8a;
+  font-size: 0.85rem;
+}
+
+.previewFoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btnFoto {
+  grid-column: 2;
+  grid-row: 5 / 7;
+  align-self: end;
+  margin-bottom: 10px;   
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 14px;
+  background: #fff;
+  color: var(--azul);
+  border: 1px solid var(--azul);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btnFoto .mas {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.errorFoto {
+  grid-column: 2;
+  grid-row: 7;
+  margin: 0;
+  color: #b3261e;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-primario {
+  background: var(--fondo);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  height: 32px;
+}
+
+.Nuevomediform form > .btn-primario {
+  grid-column: 1 / -1;
+  grid-row: 8;
+  justify-self: center;
+  width: min(380px, 75%);
+  margin-top: 3.2rem;
+}
+
+.linkPerfil {
+    margin-left: 13px;
+}
+
+.main-ayudante, .mainSesion {
+    min-height: 100vh;
+    padding: 140px 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form-ayudante {
+    margin: 0;
+    width: min(500px, 92%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.secision-ayudante {
+    width: 100%;
+}
+
+.tarjetaPerfil {
+    width: min(500px, 92%);
+}
+
+.secision-ayudante input,
+.secision-ayudante select,
+.contenedor,
+.btnRegistrarAyudante {
+    width: 100%;
+    height: 28px;
+    margin-bottom: 14px;
+    padding: 0 10px;
+    background-color: #D9D9D9;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 14px;
+}
+
+.secision-ayudante input:focus,
+.secision-ayudante select:focus {
+    outline: 2px solid #50CBE7;
+    outline-offset: 1px;
+}
+
+.nota {
+    text-align: center;
+    margin: 0;
+    padding: 14px;
+    background: #F24B4B;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.form-ayudante .IniciarSesion:hover {
+    filter: brightness(1.1);
+}
+
+.main-ayudante > .IniciarSesion {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 84px;
+    height: 84px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #E0DDE1;
+    color: black;
+    font-size: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor, .btnRegistrarAyudante {
+    display: flex;
+    align-items: center;
+}
+
+.headerAdmin {
+    position: relative;
+    justify-content: space-between;
+    padding: 12px 32px;
+    background-color: #E0DDE1;
+    color: #000;
+}
+
+.headerAdminMarca {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logoAdmin {
+    border-radius: 50%;
+    background: #fff;
+    object-fit: cover;
+}
+
+.headerAdmin h2 {
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 1.1;
+}
+
+.headerAdmin p {
+    font-size: 0.95rem;
+}
+
+.cerrarSesionAdmin {
+    color: #000;
+    font-size: 1rem;
+}
+
+.mainAdmin {
+    min-height: calc(100vh - 88px);
+    padding: 40px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.tablaUsuarios {
+    width: min(1000px, 100%);
+    min-height: 480px;
+    padding: 16px 20px;
+    background: #C1C3CB;
+    border-radius: 8px;
+    color: #000;
+}
+
+.tablaUsuariosEncabezado,
+.filaUsuario {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 12px;
+}
+
+.tablaUsuariosEncabezado {
+    padding: 0 12px 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.tablaUsuariosEncabezado span:nth-child(2) {
+    text-align: center;
+}
+
+.filaUsuario {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1px solid #888;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.filaNombre,
+.filaReportes {
+    color: #000;
+    font-weight: 700;
+}
+
+.filaReportes {
+    text-align: center;
+}
+
+.btnEliminarUsuario {
+    margin: 0;
+    justify-self: end;
+    padding: 0;
+    background: none;
+    border: none;
+    color: #F24B4B;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.btnEliminarUsuario:hover {
+    text-decoration: underline;
+}
+
+.sinResultados {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #9fb3bc;
+}
+
+.panelAdmin {
+    width: min(1000px, 100%);
+    padding: 28px 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    background: #C1C3CB;
+    border-radius: 8px;
+    color: #000;
+}
+
+.datosUsuarioAdmin {
+    display: flex;
+    flex-direction: column;
+}
+
+.datosUsuarioAdmin label {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.datosUsuarioAdmin input {
+    height: 34px;
+    margin-bottom: 14px;
+    padding: 0 10px;
+    background: #fff;
+    border: 1px solid #888;
+    border-radius: 4px;
+    font: inherit;
+    font-size: 0.95rem;
+}
+
+.btnCerrarAdmin {
+    align-self: center;
+    margin-top: 16px;
+    padding: 6px 36px;
+    background: #2BA6DC;
+    color: #000;
+    border: 1px solid #1a7aa5;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.columnaDerechaAdmin h3 {
+    margin-bottom: 4px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.cajaBlancaAdmin {
+    min-height: 300px;
+    padding: 6px;
+    background: #fff;
+    border: 1px solid #888;
+    border-radius: 4px;
+}
+
+.tarjetaReporte {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: #2BA6DC;
+    border-radius: 4px;
+    font-size: 0.7rem;
+}
+
+.imagenReporte {
+    flex: 0 0 120px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E0DDE1;
+    border: 1px solid #888;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    overflow: hidden;
+}
+
+.imagenReporte img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.historialColumnas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+}
+
+.historialColumna {
+    padding: 4px 6px;
+}
+
+.historialColumna + .historialColumna {
+    border-left: 2px solid #000;
+}
+
+.historialColumna h4 {
+    font-weight: 400;
+    font-size: 0.7rem;
+}
+
+.tablaONGEncabezado,
+.filaONG {
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 1fr 0.8fr;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.tablaONGEncabezado {
+    padding: 0 12px 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.filaONG {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1px solid #888;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+a.filaONG {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.filaONG:hover {
+    background: #eef6fb;
+}
+
+.panelDonacion {
+    width: min(700px, 100%);
+    padding: 28px 16px 32px;
+    background: #C1C3CB;
+    border-radius: 8px;
+    color: #000;
+}
+
+.filaDonacion {
+    display: flex;
+    align-items: flex-end;
+    gap: 36px;
+    margin-bottom: 28px;
+    padding: 0 16px;
+}
+
+.campoDonacion {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.campoDonacion label {
+    margin-bottom: 4px;
+    font-size: 1.15rem;
+}
+
+.campoDonacion input {
+    height: 40px;
+    padding: 0 12px;
+    background: #fff;
+    border: 1px solid #888;
+    border-radius: 4px;
+    font: inherit;
+    font-size: 0.95rem;
+}
+
+.pildoraEstado {
+    margin: 0 0 4px;
+    padding: 4px 12px;
+    min-width: 144px;
+    background: #9fb3bc;
+    color: #000;
+    border: none;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pildoraEstado.activa {
+    background: #2BA6DC;
+}
+
+.filaFechaHora {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+    padding: 0 32px;
+}
+
+.accionesDonacion {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.btnPildora {
+    margin: 0;
+    padding: 8px 40px;
+    background: #2BA6DC;
+    color: #000;
+    border: none;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btnPildora:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* =====================================================================
+   Añadido al conectar el frontend con el backend.
+   No cambia el diseño existente: solo cubre lo que faltaba.
+   ===================================================================== */
+
+/* Variables que tu CSS ya usa (var(--...)) pero no estaban definidas en ningún lado.
+   Se definieron con colores de tu propia paleta; ajústalas a tu gusto. */
+:root {
+    --fondo: #224251;
+    --tarjeta: #224251;
+    --azul: #50CBE7;
+    --borde: #50CBE7;
+    --rojo: #F24B4B;
+    --texto: #000;
+}
+
+/* Mensajes de error y de aviso */
+.mensajeError,
+.mensajeAviso {
+    margin: 12px 0 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+.mensajeError { color: #ff9a9a; }
+.mensajeAviso { color: #9ff0c9; }
+.listaMedicamentos > .mensajeError,
+.listaMedicamentos > .mensajeAviso { grid-column: 1 / -1; margin: 0; }
+.panelAdmin .mensajeError,
+.tablaUsuarios .mensajeError,
+.modalCaja .mensajeError { color: #b3261e; }
+.panelDonacion .mensajeError { text-align: center; }
+
+/* Formulario de medicamento */
+.Nuevomediform .errorFoto { color: #ff9a9a; }
+.Nuevomediform form > .mensajeError { grid-column: 1 / -1; grid-row: 9; }
+.Nuevomediform form > .enlaceCancelar { grid-column: 1 / -1; grid-row: 10; justify-self: center; margin-top: 12px; }
+.Nuevomediform > .mensajeError { margin-bottom: 12px; }
+.Nuevomediform > .enlaceCancelar { display: block; text-align: center; }
+
+/* Tarjetas de medicamento con acciones */
+.tarjetaDetalle { font-size: 0.9rem; }
+.etiquetaEstado { font-size: 0.9rem; font-weight: 700; }
+.tarjetaAcciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.btnTarjeta {
+    display: inline-block;
+    margin: 8px 8px 0 0;
+    padding: 6px 16px;
+    background: #224251;
+    color: #E0DDE1;
+    border: 1px solid #224251;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.btnTarjeta.secundario { background: transparent; color: #224251; }
+.btnTarjeta:disabled { opacity: 0.6; cursor: not-allowed; }
+.solicitud {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(34, 66, 81, 0.35);
+    font-size: 0.85rem;
+}
+.tarjeta { align-items: flex-start; }
+
+/* Paneles de administración */
+.itemHistorial { padding: 4px 0; font-size: 0.75rem; border-bottom: 1px solid #aaa; }
+.tarjetaReporte + .tarjetaReporte { margin-top: 8px; }
+
+/* Ventana de reporte */
+.modalFondo {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.6);
+}
+.modalCaja {
+    margin: 0;
+    width: min(480px, 100%);
+    max-height: 90vh;
+    overflow: auto;
+    padding: 24px;
+    background: #C1C3CB;
+    color: #000;
+    border-radius: 8px;
+}
+.modalCaja h2 { font-size: 1.2rem; margin-bottom: 8px; }
+.modalCaja label { display: block; margin: 14px 0 4px; font-size: 0.9rem; }
+.modalCaja textarea,
+.modalCaja input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    background: #fff;
+    color: #000;
+    border: 1px solid #888;
+    border-radius: 4px;
+    font: inherit;
+}
+.modalCaja textarea { min-height: 110px; resize: vertical; }
+.modalCaja .accionesDonacion { margin-top: 20px; }
+.modalCaja .btnPildora { padding: 8px 24px; font-size: 1rem; }
