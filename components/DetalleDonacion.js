@@ -24,7 +24,6 @@ export default function DetalleDonacion({ id }) {
   const completada = donacion?.estado === "COMPLETADA";
   const puedeTerminar = Boolean(donacion?.entregado && donacion?.recibido) && !completada;
 
-  // Cada pulsación se guarda en el servidor; si falla, el botón queda como estaba
   async function alternar(campo) {
     setError("");
     setGuardando(true);

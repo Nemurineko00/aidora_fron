@@ -3,11 +3,6 @@
 import { useState } from "react";
 import TarjetaMedicamento from "./targertaMedicamento";
 
-/**
- * Lista con buscador por nombre o registro sanitario.
- * Cada elemento de `medicamentos`: { id, nombre, rs, imagen?, detalles? }.
- * `renderAcciones(m)` pinta botones dentro de la tarjeta.
- */
 export default function BuscadorMedicamentos({
   medicamentos,
   cargando = false,

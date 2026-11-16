@@ -9,10 +9,6 @@ const MAX_BYTES = 5 * 1024 * 1024;
 
 const mananaISO = () => new Date(Date.now() + 864e5).toLocaleDateString("en-CA", { timeZone: "America/Mexico_City" });
 
-/**
- * Formulario de medicamento, compartido por "Nuevo medicamento" y "Detalle publicación".
- * `onEnviar(datos)` guarda los datos (foto incluida, como File); si lanza un error, se muestra aquí.
- */
 export default function FormularioMedicamento({ titulo, inicial, cancelarHref, onEnviar }) {
   const [nombre, setNombre] = useState(inicial?.nombre ?? "");
   const [lote, setLote] = useState(inicial?.numeroLote ?? "");
@@ -33,7 +29,6 @@ export default function FormularioMedicamento({ titulo, inicial, cancelarHref, o
       .catch((e) => setError(e.message));
   }, []);
 
-  // Libera la vista previa local al cambiarla o al salir
   useEffect(() => {
     return () => {
       if (vistaLocal) URL.revokeObjectURL(vistaLocal);
