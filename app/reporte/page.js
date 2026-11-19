@@ -1,14 +1,118 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ReportarIncidencia(){
-    const router =useRouter();
-    return(
-        <>
+// TODO: ajusta esta lista a los motivos reales de tu proyecto.
+const MOTIVOS = [
+  "Medicamento caducado",
+  "Medicamento en mal estado",
+  "Información incorrecta en la publicación",
+  "Comportamiento inapropiado del usuario",
+  "Publicación fraudulenta",
+];
+
+const MAX_BYTES = 5 * 1024 * 1024; // 5 MB, igual que en FormularioMedicamento
+const TIPOS_PERMITIDOS = ["image/png", "image/jpeg", "image/webp"];
+
+// TODO: cambia la URL por la de tu backend. Si usas una variable de entorno,
+// debe empezar con NEXT_PUBLIC_ y estar también en Vercel/Render.
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+
+export default function ReportarIncidencia() {
+  const router = useRouter();
+
+  const [motivos, setMotivos] = useState([]);
+  const [otro, setOtro] = useState(false);
+  const [otroTexto, setOtroTexto] = useState("");
+  const [foto, setFoto] = useState(null);
+  const [preview, setPreview] = useState("");
+  const [error, setError] = useState("");
+  const [enviando, setEnviando] = useState(false);
+
+  // Libera la URL temporal de la vista previa al cambiar de foto o salir.
+  useEffect(() => {
+    return () => {
+      if (preview) URL.revokeObjectURL(preview);
+    };
+  }, [preview]);
+
+  const toggleMotivo = (motivo) => {
+    setMotivos((actuales) =>
+      actuales.includes(motivo)
+        ? actuales.filter((m) => m !== motivo)
+        : [...actuales, motivo]
+    );
+  };
+
+  const handleFoto = (e) => {
+    const archivo = e.target.files?.[0];
+    if (!archivo) return;
+
+    if (!TIPOS_PERMITIDOS.includes(archivo.type)) {
+      setError("La imagen debe ser PNG, JPG o WEBP.");
+      e.target.value = "";
+      return;
+    }
+    if (archivo.size > MAX_BYTES) {
+      setError("La imagen no puede pesar más de 5 MB.");
+      e.target.value = "";
+      return;
+    }
+
+    setError("");
+    setFoto(archivo);
+    setPreview(URL.createObjectURL(archivo));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    const motivosFinales = [...motivos];
+    if (otro) {
+      if (!otroTexto.trim()) {
+        setError("Describe el problema en el campo “Otro”.");
+        return;
+      }
+      motivosFinales.push(`Otro: ${otroTexto.trim()}`);
+    }
+
+    if (motivosFinales.length === 0) {
+      setError("Selecciona al menos un motivo.");
+      return;
+    }
+
+    const datos = new FormData();
+    datos.append("motivos", JSON.stringify(motivosFinales));
+    if (foto) datos.append("foto", foto);
+
+    try {
+      setEnviando(true);
+      // TODO: ajusta la ruta del endpoint y, si el backend lo pide,
+      // agrega el id de la publicación o el token de sesión.
+      const respuesta = await fetch(`${API_URL}/reportes`, {
+        method: "POST",
+        body: datos,
+      });
+
+      if (!respuesta.ok) {
+        throw new Error(`Error ${respuesta.status}`);
+      }
+
+      router.push("/home");
+    } catch (err) {
+      setError("No se pudo enviar el reporte. Inténtalo de nuevo.");
+    } finally {
+      setEnviando(false);
+    }
+  };
+
+  return (
+    <>
       <header className="headerHome">
         <Image src="/img/logo.png" alt="Aidora" width={80} height={80} />
         <h2>Aidora</h2>
@@ -26,7 +130,6 @@ export default function ReportarIncidencia(){
           </div>
 
           <div className="reporteContenido">
-            {}
             <fieldset className="motivosReporte">
               <legend>Ingrese el motivo del reporte</legend>
 
@@ -65,12 +168,12 @@ export default function ReportarIncidencia(){
               </div>
             </fieldset>
 
-            {}
             <div className="evidenciaReporte">
               <p>Adjunte imagen de evidencia</p>
 
               <div className="previewFoto">
                 {preview ? (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={preview} alt="Evidencia" />
                 ) : (
                   <span>Sin foto</span>
@@ -86,7 +189,6 @@ export default function ReportarIncidencia(){
                 hidden
               />
 
-              {}
               <label htmlFor="foto" className="btnFoto">
                 <span>Subir foto</span>
                 <span className="mas">+</span>
@@ -94,16 +196,22 @@ export default function ReportarIncidencia(){
             </div>
           </div>
 
+          {error && (
+            <p className="errorReporte" role="alert">
+              {error}
+            </p>
+          )}
+
           <div className="botonesReporte">
             <Link href="/detalles" className="enviar">
               Cerrar
             </Link>
-            <button type="submit" className="enviar">
-              Reportar
+            <button type="submit" className="enviar" disabled={enviando}>
+              {enviando ? "Enviando..." : "Reportar"}
             </button>
           </div>
         </form>
       </main>
     </>
-    );
+  );
 }
