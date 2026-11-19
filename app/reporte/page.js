@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-// TODO: ajusta esta lista a los motivos reales de tu proyecto.
 const MOTIVOS = [
   "Medicamento caducado",
   "Medicamento en mal estado",
@@ -15,11 +14,9 @@ const MOTIVOS = [
   "Publicación fraudulenta",
 ];
 
-const MAX_BYTES = 5 * 1024 * 1024; // 5 MB, igual que en FormularioMedicamento
+const MAX_BYTES = 5 * 1024 * 1024; 
 const TIPOS_PERMITIDOS = ["image/png", "image/jpeg", "image/webp"];
 
-// TODO: cambia la URL por la de tu backend. Si usas una variable de entorno,
-// debe empezar con NEXT_PUBLIC_ y estar también en Vercel/Render.
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 export default function ReportarIncidencia() {
@@ -33,7 +30,6 @@ export default function ReportarIncidencia() {
   const [error, setError] = useState("");
   const [enviando, setEnviando] = useState(false);
 
-  // Libera la URL temporal de la vista previa al cambiar de foto o salir.
   useEffect(() => {
     return () => {
       if (preview) URL.revokeObjectURL(preview);
@@ -92,8 +88,6 @@ export default function ReportarIncidencia() {
 
     try {
       setEnviando(true);
-      // TODO: ajusta la ruta del endpoint y, si el backend lo pide,
-      // agrega el id de la publicación o el token de sesión.
       const respuesta = await fetch(`${API_URL}/reportes`, {
         method: "POST",
         body: datos,
@@ -173,7 +167,6 @@ export default function ReportarIncidencia() {
 
               <div className="previewFoto">
                 {preview ? (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={preview} alt="Evidencia" />
                 ) : (
                   <span>Sin foto</span>
