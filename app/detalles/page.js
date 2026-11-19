@@ -23,6 +23,9 @@ export default function NuevoMedicamento() {
           <Link href="/home">Buscar medicamentos</Link>
           <Link href="/misDonaciones">Mis Donaciones</Link>
           <Link href="/misPublicaciones">Mis Publicaciones</Link>
+          <Link href="/sesion" className="linkPerfil">
+            <Image src="/img/perfil.png" alt="Perfil" width={60} height={60}/>          
+          </Link>
         </nav>
       </header>
 
