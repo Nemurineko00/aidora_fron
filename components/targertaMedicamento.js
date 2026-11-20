@@ -1,14 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
-/**
- * Tarjeta de medicamento.
- *  - imagen: URL de la foto subida (si no hay, se usa un icono por defecto).
- *  - detalles: líneas de texto extra bajo el nombre y el RS.
- *  - children: acciones (botones) que se muestran dentro de la tarjeta.
- */
-export default function TarjetaMedicamento({ nombre, rs, imagen, detalles = [], children }) {
+export default function TarjetaMedicamento({ nombre, rs, imagen, href, detalles = [], children }) {
   return (
-    <article className="tarjeta">
+    <article className={href ? "tarjeta tarjetaClicable" : "tarjeta"}>
       <div className="tarjetaImagen">
         {imagen ? (
           // La foto viene del backend (otro origen), por eso <img> y no next/image
@@ -18,7 +13,16 @@ export default function TarjetaMedicamento({ nombre, rs, imagen, detalles = [], 
         )}
       </div>
       <div className="tarjetaInfo">
-        <p>Nombre: {nombre}</p>
+        <p>
+          Nombre:{" "}
+          {href ? (
+            <Link href={href} className="tarjetaEnlace">
+              {nombre}
+            </Link>
+          ) : (
+            nombre
+          )}
+        </p>
         <p>RS: {rs}</p>
         {detalles.map((texto, i) => (
           <p key={i} className="tarjetaDetalle">
