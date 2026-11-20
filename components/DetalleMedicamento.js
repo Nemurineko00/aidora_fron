@@ -91,7 +91,6 @@ function Contenido() {
           <section className="fichaMedicamento">
             <div className="fichaImagen">
               {m.fotoUrl ? (
-                // La foto puede venir de otro origen o ser una vista previa local, por eso <img>
                 <img src={m.fotoUrl} alt={m.nombre} />
               ) : (
                 <Image src="/img/medicamento.svg" alt={m.nombre} width={120} height={120} />
