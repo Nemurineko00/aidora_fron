@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import BuscadorMedicamentos from "@/components/buscarMedicamentos";
 import { listarMedicamentosDisponibles, solicitarMedicamento } from "@/lib/servicios";
-import { formatoFecha } from "@/lib/formato";
 
 export default function VistaHome() {
   const [medicamentos, setMedicamentos] = useState([]);
@@ -38,7 +37,7 @@ export default function VistaHome() {
       setAviso(`Solicitaste ${m.nombre}. Puedes ver el estado en "Mis Donaciones".`);
     } catch (e) {
       setError(e.message);
-      cargar(); // por si el medicamento ya no está disponible
+      cargar();
     } finally {
       setSolicitando(null);
     }
@@ -49,7 +48,7 @@ export default function VistaHome() {
     nombre: m.nombre,
     rs: m.registroSanitario,
     imagen: m.fotoUrl,
-    detalles: [`Caduca: ${formatoFecha(m.fechaCaducidad)}`, `Entrega en: ${m.puntoEntrega.nombre}`],
+    href: `/detPublicacion?id=${m.id}`,
     solicitado: m.solicitado,
   }));
 
