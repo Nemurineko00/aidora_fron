@@ -922,14 +922,6 @@ a.filaONG:hover {
     cursor: not-allowed;
 }
 
-
-/* =====================================================================
-   Añadido al conectar el frontend con el backend.
-   No cambia el diseño existente: solo cubre lo que faltaba.
-   ===================================================================== */
-
-/* Variables que tu CSS ya usa (var(--...)) pero no estaban definidas en ningún lado.
-   Se definieron con colores de tu propia paleta; ajústalas a tu gusto. */
 :root {
     --fondo: #224251;
     --tarjeta: #C1C3CB;
@@ -939,7 +931,6 @@ a.filaONG:hover {
     --texto: #000;
 }
 
-/* Mensajes de error y de aviso */
 .mensajeError,
 .mensajeAviso {
     margin: 12px 0 0;
@@ -956,14 +947,12 @@ a.filaONG:hover {
 .Nuevomediform .mensajeError{color: #b3261e;}
 .panelDonacion .mensajeError { text-align: center; }
 
-/* Formulario de medicamento */
 .Nuevomediform .errorFoto { color: #b3261e; }
 .Nuevomediform form > .mensajeError { grid-column: 1 / -1; grid-row: 9; }
 .Nuevomediform form > .enlaceCancelar { grid-column: 1 / -1; grid-row: 10; justify-self: center; margin-top: 12px; }
 .Nuevomediform > .mensajeError { margin-bottom: 12px; }
 .Nuevomediform > .enlaceCancelar { display: block; text-align: center; }
 
-/* Tarjetas de medicamento con acciones */
 .tarjetaDetalle { font-size: 0.9rem; }
 .etiquetaEstado { font-size: 0.9rem; font-weight: 700; }
 .tarjetaAcciones { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -1027,3 +1016,47 @@ a.filaONG:hover {
 .modalCaja textarea { min-height: 110px; resize: vertical; }
 .modalCaja .accionesDonacion { margin-top: 20px; }
 .modalCaja .btnPildora { padding: 8px 24px; font-size: 1rem; }
+
+.tarjeta { position: relative; }
+.tarjetaClicable { cursor: pointer; transition: filter 0.15s; }
+.tarjetaClicable:hover { filter: brightness(0.96); }
+.tarjetaEnlace { color: inherit; font-weight: 700; text-decoration: none; }
+.tarjetaEnlace::after { content: ""; position: absolute; inset: 0; border-radius: 12px; }
+.tarjetaEnlace:focus-visible { outline: none; }
+.tarjetaEnlace:focus-visible::after { outline: 3px solid #224251; outline-offset: 2px; }
+.tarjetaClicable .btnTarjeta { position: relative; z-index: 1; }
+
+.detalleMedicamento { width: min(720px, 92%); margin: 140px auto 40px; }
+.fichaMedicamento {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 1.6rem;
+    background: var(--tarjeta);
+    color: #224251;
+    border-radius: 14px;
+}
+.fichaImagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    background: rgba(224, 221, 225, 0.6);
+    border-radius: 18px;
+    overflow: hidden;
+}
+.fichaImagen img { width: 100%; height: 100%; object-fit: cover; }
+.fichaDatos {
+    flex: 1 1 280px;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 16px;
+    margin: 0;
+}
+.fichaDatos dt { font-weight: 700; }
+.fichaDatos dd { margin: 0; overflow-wrap: anywhere; }
+.fichaAcciones { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; }
+.fichaAcciones .btnTarjeta { margin: 0; }
+.detalleMedicamento .mensajeError { color: #ff9a9a; margin: 0 0 12px; }
+.detalleMedicamento .mensajeAviso { color: #9ff0c9; margin: 0 0 12px; }
