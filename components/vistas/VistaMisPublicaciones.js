@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BuscadorMedicamentos from "@/components/buscarMedicamentos";
 import { listarMisPublicaciones, aceptarSolicitud, rechazarSolicitud } from "@/lib/servicios";
-import { formatoFecha, ETIQUETA_ESTADO } from "@/lib/formato";
+import { ETIQUETA_ESTADO } from "@/lib/formato";
 
 export default function VistaMisPublicaciones() {
   const [medicamentos, setMedicamentos] = useState([]);
@@ -41,12 +41,12 @@ export default function VistaMisPublicaciones() {
     }
   }
 
-  const lista = medicamentos.map((m) => ({
+    const lista = medicamentos.map((m) => ({
     id: m.id,
     nombre: m.nombre,
     rs: m.registroSanitario,
     imagen: m.fotoUrl,
-    detalles: [`Caduca: ${formatoFecha(m.fechaCaducidad)}`, `Entrega en: ${m.puntoEntrega.nombre}`],
+    href: `/detPublicacion?id=${m.id}`,
     original: m,
   }));
 

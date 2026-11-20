@@ -6,7 +6,6 @@ import Link from "next/link";
 import BuscadorMedicamentos from "@/components/buscarMedicamentos";
 import ModalReporte from "@/components/ModalReporte";
 import { listarMisDonaciones } from "@/lib/servicios";
-import { formatoFecha, ETIQUETA_ESTADO } from "@/lib/formato";
 
 export default function VistaMisDonaciones() {
   const [donaciones, setDonaciones] = useState([]);
@@ -29,18 +28,12 @@ export default function VistaMisDonaciones() {
     cargar();
   }, [cargar]);
 
-  const lista = donaciones.map((d) => ({
+    const lista = donaciones.map((d) => ({
     id: d.id,
     nombre: d.medicamento.nombre,
     rs: d.medicamento.registroSanitario,
     imagen: d.medicamento.fotoUrl,
-    detalles: [
-      `Tu rol: ${d.miRol === "DONANTE" ? "Donante" : "Receptor"}`,
-      `Estado: ${ETIQUETA_ESTADO[d.estado]}`,
-      `${d.miRol === "DONANTE" ? "Receptor" : "Donante"}: ${d.contraparte}`,
-      `Caduca: ${formatoFecha(d.medicamento.fechaCaducidad)}`,
-      `Entrega en: ${d.puntoEntrega.nombre}`,
-    ],
+    href: `/detPublicacion?id=${d.medicamento.id}&donacion=${d.id}`,
     original: d,
   }));
 
