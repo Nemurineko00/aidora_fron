@@ -43,12 +43,11 @@ export default function BuscadorMedicamentos({
           <p className="sinResultados">Cargando...</p>
         ) : filtrados.length > 0 ? (
           filtrados.map((m) => (
-            <TarjetaMedicamento key={m.id} nombre={m.nombre} rs={m.rs} imagen={m.imagen} detalles={m.detalles}>
+              <TarjetaMedicamento key={m.id} nombre={m.nombre} rs={m.rs} imagen={m.imagen} href={m.href} detalles={m.detalles}>
               {renderAcciones ? renderAcciones(m) : null}
             </TarjetaMedicamento>
           ))
         ) : (
-          // Lista vacía de verdad -> `vacio`; hay datos pero la búsqueda no coincide -> mensaje original
           <p className="sinResultados">{medicamentos.length === 0 ? vacio : "No se encontraron medicamentos."}</p>
         )}
       </main>
