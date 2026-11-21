@@ -16,25 +16,25 @@ export default function Registro() {
 
   const cambiar = (campo) => (e) => setDatos((d) => ({ ...d, [campo]: e.target.value }));
 
-  async function handleSubmit(e) {
+    async function handleSubmit(e) {
     e.preventDefault();
-    setError("");
-    setEnviando(true);
-    try {
-      await registrar({
-        usuario: datos.usuario,
-        password: datos.contrasena,
-        correo: datos.correo,
-        nombre: datos.nombre,
-        apellidoPaterno: datos.apellidoP,
-        apellidoMaterno: datos.apellidoM,
-        edad: datos.edad,
-      });
-      router.push("/home");
-    } catch (err) {
-      setError(err.message);
-      setEnviando(false);
-    }
+    const valor = (id) => document.getElementById(id).value;
+
+    const respuesta = await fetch('http://localhost:4000/api/usuarios/registro', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        usuario: valor('usuario'),
+        contrasena: valor('contrasena'),
+        correo: valor('correo'),
+        nombre: valor('nombre'),
+        apellidoP: valor('apellidoP'),
+        apellidoM: valor('apellidoM'),
+      }),
+    });
+
+    const datos = await respuesta.json();
+    alert(respuesta.ok ? `Usuario creado con el correo ${datos.usuario.email || datos.usuario.correo}` : datos.error);
   }
 
   return (
