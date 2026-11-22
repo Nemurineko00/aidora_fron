@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BotonCerrarSesion from "@/components/BotonCerrarSesion";
 import { listarUsuariosAdmin, eliminarUsuarioAdmin } from "@/lib/servicios";
 
 export default function HomeAdmin() {
@@ -18,7 +19,7 @@ export default function HomeAdmin() {
   }, []);
 
   async function eliminar(u) {
-    if (!window.confirm(`¿Eliminar a "${u.usuario}"? Se borrarán también sus publicaciones, solicitudes y reportes. Esta acción no se puede deshacer.`)) return;
+    if (!window.confirm(`¿Desactivar a "${u.usuario}"? Ya no podrá iniciar sesión en Aidora.`)) return;    
     setError("");
     try {
       await eliminarUsuarioAdmin(u.id);

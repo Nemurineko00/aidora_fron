@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BotonCerrarSesion from "@/components/BotonCerrarSesion";
 import { useSearchParams } from "next/navigation";
 import { obtenerUsuarioAdmin } from "@/lib/servicios";
 
