@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { api } from "@/lib/api";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -17,10 +18,18 @@ const MOTIVOS = [
 const MAX_BYTES = 5 * 1024 * 1024; 
 const TIPOS_PERMITIDOS = ["image/png", "image/jpeg", "image/webp"];
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 export default function ReportarIncidencia() {
+  return (
+    <Suspense fallback={null}>
+      <Formulario />
+    </Suspense>
+  );
+}
+
+function Formulario() {
   const router = useRouter();
+  const idPub = useSearchParams().get("pub");
 
   const [motivos, setMotivos] = useState([]);
   const [otro, setOtro] = useState(false);
@@ -81,25 +90,22 @@ export default function ReportarIncidencia() {
       setError("Selecciona al menos un motivo.");
       return;
     }
+    if (!idPub) {
+      setError("No sabemos qué publicación quieres reportar. Entra desde la publicación.");
+      return;
+    }
 
     const datos = new FormData();
+     datos.append("id_pub", idPub);
     datos.append("motivos", JSON.stringify(motivosFinales));
     if (foto) datos.append("foto", foto);
 
     try {
       setEnviando(true);
-      const respuesta = await fetch(`${API_URL}/reportes`, {
-        method: "POST",
-        body: datos,
-      });
-
-      if (!respuesta.ok) {
-        throw new Error(`Error ${respuesta.status}`);
-      }
-
+      await api("/reportes", { metodo: "POST", formData: datos });
       router.push("/home");
     } catch (err) {
-      setError("No se pudo enviar el reporte. Inténtalo de nuevo.");
+      setError(err.message);
     } finally {
       setEnviando(false);
     }
