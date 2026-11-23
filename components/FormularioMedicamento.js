@@ -15,6 +15,7 @@ export default function FormularioMedicamento({ titulo, inicial, cancelarHref, o
   const [caducidad, setCaducidad] = useState(inicial?.fechaCaducidad ?? "");
   const [rs, setRs] = useState(inicial?.registroSanitario ?? "");
   const [punto, setPunto] = useState(inicial ? String(inicial.puntoEntrega.id) : "");
+  const [cantidad, setCantidad] = useState(String(inicial?.cantidad ?? 1));
   const [puntos, setPuntos] = useState([]);
   const [foto, setFoto] = useState(null);
   const [vistaLocal, setVistaLocal] = useState(null);
@@ -58,7 +59,7 @@ export default function FormularioMedicamento({ titulo, inicial, cancelarHref, o
     setError("");
     setEnviando(true);
     try {
-      await onEnviar({ nombre, numeroLote: lote, fechaCaducidad: caducidad, registroSanitario: rs, puntoEntregaId: punto, foto });
+      await onEnviar({ nombre, numeroLote: lote, fechaCaducidad: caducidad, registroSanitario: rs, puntoEntregaId: punto, cantidad: Number(cantidad), foto });
     } catch (err) {
       setError(err.message);
       setEnviando(false);
@@ -99,6 +100,11 @@ export default function FormularioMedicamento({ titulo, inicial, cancelarHref, o
           <label htmlFor="RegistroSanitario">Código de Registro Sanitario(RS)</label>
           <input type="text" name="RegistroSanitario" id="RegistroSanitario" value={rs} onChange={(e) => setRs(e.target.value)} required maxLength={60} />
           <p className="NotaRS">Nota: El RS está impreso en la caja del medicamento</p>
+        </div>
+
+        <div className="Campoentrada">
+          <label htmlFor="cantidad">Cantidad (piezas o cajas)</label>
+          <input type="number" name="cantidad" id="cantidad" value={cantidad} onChange={(e) => setCantidad(e.target.value)} min={1} step={1} required />
         </div>
 
         <label htmlFor="Puntoentrega">Selecciona un punto de entrega:</label>

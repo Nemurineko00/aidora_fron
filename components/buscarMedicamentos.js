@@ -14,7 +14,9 @@ export default function BuscadorMedicamentos({
   const [busqueda, setBusqueda] = useState("");
 
   const texto = busqueda.toLowerCase().trim();
-  const filtrados = medicamentos.filter((m) => m.nombre.toLowerCase().includes(texto) || m.rs.toLowerCase().includes(texto));
+  const filtrados = medicamentos.filter(
+    (m) => String(m.nombre ?? "").toLowerCase().includes(texto) || String(m.rs ?? "").toLowerCase().includes(texto)
+  );
 
   return (
     <>
