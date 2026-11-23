@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import VideoFondo from "@/components/VideoFondo";
 import BotonVolver from "@/components/BotonVolver";
 import { registrar } from "@/lib/servicios";
+import { validar, primerError, LIMITES } from "@/lib/validaciones";
 
 export default function Registro() {
   const router = useRouter();
@@ -19,6 +20,8 @@ export default function Registro() {
       async function handleSubmit(e) {
     e.preventDefault();
     setError("");
+    const falla = primerError(validar.usuario(datos.usuario), validar.edad(datos.edad));
+    if (falla) return setError(falla);
     setEnviando(true);
     try {
       await registrar({
@@ -57,31 +60,32 @@ export default function Registro() {
 
             <div className="formulario">
               <label htmlFor="usuario">Nombre de Usuario</label><br />
-              <input type="text" id="usuario" placeholder="juanitopro777" value={datos.usuario} onChange={cambiar("usuario")} required minLength={3} maxLength={30} />
+              <input type="text" id="usuario" placeholder="juanitopro777" value={datos.usuario} onChange={cambiar("usuario")} required minLength={LIMITES.usuario.min} maxLength={LIMITES.usuario.max} />
             </div>
             <div className="formulario">
               <label htmlFor="contrasena">Contraseña</label><br />
-              <input type="password" id="contrasena" placeholder="Ingrese su contraseña" value={datos.contrasena} onChange={cambiar("contrasena")} required minLength={8} maxLength={72} />
+              <input type="password" id="contrasena" placeholder="Ingrese su contraseña" value={datos.contrasena} onChange={cambiar("contrasena")} required minLength={LIMITES.contrasena.min} maxLength={LIMITES.contrasena.max} />
+              <small>Mínimo 8 caracteres, con mayúscula, minúscula, número y símbolo, sin espacios.</small>
             </div>
             <div className="formulario">
               <label htmlFor="correo">Correo</label><br />
-              <input type="email" id="correo" placeholder="Email" value={datos.correo} onChange={cambiar("correo")} required />
+              <input type="email" id="correo" placeholder="Email" value={datos.correo} onChange={cambiar("correo")} required maxLength={LIMITES.correo.max} />
             </div>
             <div className="formulario">
               <label htmlFor="nombre">Nombre</label><br />
-              <input type="text" id="nombre" placeholder="Nombre" value={datos.nombre} onChange={cambiar("nombre")} required />
+              <input type="text" id="nombre" placeholder="Nombre" value={datos.nombre} onChange={cambiar("nombre")} required minLength={LIMITES.nombrePersona.min} maxLength={LIMITES.nombrePersona.max} />
             </div>
             <div className="formulario">
               <label htmlFor="apellidoP">Apellido Paterno</label><br />
-              <input type="text" id="apellidoP" value={datos.apellidoP} onChange={cambiar("apellidoP")} required />
+              <input type="text" id="apellidoP" value={datos.apellidoP} onChange={cambiar("apellidoP")} required minLength={LIMITES.nombrePersona.min} maxLength={LIMITES.nombrePersona.max} />
             </div>
             <div className="formulario">
               <label htmlFor="apellidoM">Apellido Materno</label><br />
-              <input type="text" id="apellidoM" value={datos.apellidoM} onChange={cambiar("apellidoM")} required />
+              <input type="text" id="apellidoM" value={datos.apellidoM} onChange={cambiar("apellidoM")} required minLength={LIMITES.nombrePersona.min} maxLength={LIMITES.nombrePersona.max} />
             </div>
             <div className="formulario">
               <label htmlFor="edad">Edad</label><br />
-              <input type="number" id="edad" min={1} max={120} step={1} value={datos.edad} onChange={cambiar("edad")} required />
+              <input type="number" id="edad" min={LIMITES.edad.min} max={LIMITES.edad.max} step={1} value={datos.edad} onChange={cambiar("edad")} required />
             </div>
             <div className="formulario">
               <p><strong>¿Ya tienes una cuenta?</strong><Link href="/login">Inicia sesion</Link></p>

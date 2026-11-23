@@ -51,11 +51,11 @@ export default function Login() {
 
             <div className="formulario">
               <label htmlFor="correo">Correo</label><br />
-              <input type="text" id="correo" placeholder="Email" value={correo} onChange={(e) => setCorreo(e.target.value)} required />
+              <input type="text" id="correo" placeholder="Email" value={correo} onChange={(e) => setCorreo(e.target.value)} required maxLength={254} />
             </div>
             <div className="formulario">
               <label htmlFor="contrasena">Contraseña</label><br />
-              <input type="password" id="contrasena" placeholder="Ingrese su contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} required />
+              <input type="password" id="contrasena" placeholder="Ingrese su contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} required maxLength={128} />
             </div>
 
             <div className="formulario">

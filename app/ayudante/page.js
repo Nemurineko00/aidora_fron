@@ -53,7 +53,7 @@ export default function RegistrarAyudante() {
         <form className="form-ayudante" onSubmit={handleSumit}>
           <section className="secision-ayudante">
             <label htmlFor="nombre">Nombre del ayudante</label>
-            <input type="text" id="nombre" name="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required maxLength={100} />
+            <input type="text" id="nombre" name="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required minLength={2} maxLength={100} />
             <label htmlFor="apoyo">Relacion del ayudante</label>
 
             <select id="apoyo" name="apoyo" value={relacion} onChange={(e) => setRelacion(e.target.value)} required>

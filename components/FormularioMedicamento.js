@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { listarPuntosEntrega } from "@/lib/servicios";
+import { LIMITES, fechaMaximaCaducidad } from "@/lib/validaciones";
 
 const TIPOS = ["image/png", "image/jpeg", "image/webp"];
 const MAX_BYTES = 5 * 1024 * 1024;
@@ -11,6 +12,7 @@ const mananaISO = () => new Date(Date.now() + 864e5).toLocaleDateString("en-CA",
 
 export default function FormularioMedicamento({ titulo, inicial, cancelarHref, onEnviar }) {
   const [nombre, setNombre] = useState(inicial?.nombre ?? "");
+  const [nombreComercial, setNombreComercial] = useState(inicial?.nombreComercial ?? "");
   const [lote, setLote] = useState(inicial?.numeroLote ?? "");
   const [caducidad, setCaducidad] = useState(inicial?.fechaCaducidad ?? "");
   const [rs, setRs] = useState(inicial?.registroSanitario ?? "");
@@ -59,7 +61,7 @@ export default function FormularioMedicamento({ titulo, inicial, cancelarHref, o
     setError("");
     setEnviando(true);
     try {
-      await onEnviar({ nombre, numeroLote: lote, fechaCaducidad: caducidad, registroSanitario: rs, puntoEntregaId: punto, cantidad: Number(cantidad), foto });
+      await onEnviar({ nombre, nombreComercial, numeroLote: lote, fechaCaducidad: caducidad, registroSanitario: rs, puntoEntregaId: punto, cantidad: Number(cantidad), foto });
     } catch (err) {
       setError(err.message);
       setEnviando(false);
@@ -75,12 +77,17 @@ export default function FormularioMedicamento({ titulo, inicial, cancelarHref, o
       <form onSubmit={enviar}>
         <div className="Campoentrada">
           <label htmlFor="nombre">Nombre del medicamento</label>
-          <input type="text" name="nombre" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required maxLength={150} />
+          <input type="text" name="nombre" id="nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required minLength={LIMITES.medicamento.min} maxLength={LIMITES.medicamento.max} placeholder="Ej. Paracetamol 500 mg" />
+        </div>
+
+        <div className="Campoentrada">
+          <label htmlFor="nombreComercial">Nombre comercial o marca (opcional)</label>
+          <input type="text" name="nombreComercial" id="nombreComercial" value={nombreComercial} onChange={(e) => setNombreComercial(e.target.value)} maxLength={LIMITES.medicamento.max} placeholder="Ej. Tempra" />
         </div>
 
         <div className="Campoentrada">
           <label htmlFor="numerolote">Número de lote</label>
-          <input type="text" name="numerolote" id="numerolote" value={lote} onChange={(e) => setLote(e.target.value)} required maxLength={60} />
+          <input type="text" name="numerolote" id="numerolote" value={lote} onChange={(e) => setLote(e.target.value)} required maxLength={LIMITES.lote.max} pattern="[A-Za-z0-9][A-Za-z0-9 ./\-]*" title="Letras, números, espacios, punto, diagonal o guion" />
         </div>
 
         <div className="Campoentrada">
@@ -92,19 +99,20 @@ export default function FormularioMedicamento({ titulo, inicial, cancelarHref, o
             value={caducidad}
             onChange={(e) => setCaducidad(e.target.value)}
             min={mananaISO()}
+            max={fechaMaximaCaducidad()}
             required
           />
         </div>
 
         <div className="Campoentrada">
           <label htmlFor="RegistroSanitario">Código de Registro Sanitario(RS)</label>
-          <input type="text" name="RegistroSanitario" id="RegistroSanitario" value={rs} onChange={(e) => setRs(e.target.value)} required maxLength={60} />
+          <input type="text" name="RegistroSanitario" id="RegistroSanitario" value={rs} onChange={(e) => setRs(e.target.value)} required minLength={LIMITES.rs.min} maxLength={LIMITES.rs.max} placeholder="Ej. 210M2004 SSA VI" />
           <p className="NotaRS">Nota: El RS está impreso en la caja del medicamento</p>
         </div>
 
         <div className="Campoentrada">
           <label htmlFor="cantidad">Cantidad (piezas o cajas)</label>
-          <input type="number" name="cantidad" id="cantidad" value={cantidad} onChange={(e) => setCantidad(e.target.value)} min={1} step={1} required />
+          <input type="number" name="cantidad" id="cantidad" value={cantidad} onChange={(e) => setCantidad(e.target.value)} min={LIMITES.cantidad.min} max={LIMITES.cantidad.max} step={1} required />
         </div>
 
         <label htmlFor="Puntoentrega">Selecciona un punto de entrega:</label>

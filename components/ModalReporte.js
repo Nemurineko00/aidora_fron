@@ -58,6 +58,7 @@ export default function ModalReporte({ publicacionId, contraparte, medicamento, 
           id="motivoReporte"
           value={motivo}
           onChange={(e) => setMotivo(e.target.value)}
+          minLength={5}
           maxLength={300}
           required
           placeholder="Ej. El lote es diferente al publicado"

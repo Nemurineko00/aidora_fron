@@ -6,6 +6,7 @@ import { api } from "@/lib/api";
 
 import Image from "next/image";
 import Link from "next/link";
+import { validar, limpiar } from "@/lib/validaciones";
 
 const MOTIVOS = [
   "Medicamento caducado",
@@ -79,11 +80,12 @@ function Formulario() {
 
     const motivosFinales = [...motivos];
     if (otro) {
-      if (!otroTexto.trim()) {
-        setError("Describe el problema en el campo “Otro”.");
+      const falla = validar.motivoOtro(otroTexto);
+      if (falla) {
+        setError(`${falla} (campo “Otro”).`);
         return;
       }
-      motivosFinales.push(`Otro: ${otroTexto.trim()}`);
+      motivosFinales.push(`Otro: ${limpiar(otroTexto)}`);
     }
 
     if (motivosFinales.length === 0) {
@@ -163,6 +165,8 @@ function Formulario() {
                   value={otroTexto}
                   onChange={(e) => setOtroTexto(e.target.value)}
                   disabled={!otro}
+                  minLength={5}
+                  maxLength={300}
                   placeholder="Describe el problema"
                 />
               </div>
