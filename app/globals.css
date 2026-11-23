@@ -1113,3 +1113,5 @@ a.filaONG:hover {
 @media (max-width: 800px) {
   .descripcion { grid-template-columns: 1fr; gap: 40px; padding: 64px 24px; }
 }
+
+button, input, select, textarea { font-family: inherit; }
