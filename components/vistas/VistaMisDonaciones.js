@@ -59,7 +59,7 @@ export default function VistaMisDonaciones() {
         aviso={aviso}
         vacio="Todavía no participas en ninguna donación."
         renderAcciones={({ original: d }) =>
-          ["ACEPTADA", "COMPLETADA"].includes(d.estado) ? (
+          d.miRol === "RECEPTOR" && ["ACEPTADA", "COMPLETADA"].includes(d.estado) ? (
             <button
               type="button"
               className="btnTarjeta secundario"
@@ -76,7 +76,7 @@ export default function VistaMisDonaciones() {
 
       {reportando && (
         <ModalReporte
-          donacionId={reportando.id}
+          publicacionId={reportando.medicamento.id}
           contraparte={reportando.contraparte}
           medicamento={reportando.medicamento.nombre}
           onCerrar={() => setReportando(null)}

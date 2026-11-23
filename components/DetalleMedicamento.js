@@ -58,7 +58,7 @@ function Contenido() {
   const d = m?.donacion;
   const puedeSolicitar = m && !m.esMia && !d && m.estado === "DISPONIBLE";
   const puedeEditar = m?.esMia && m.estado === "DISPONIBLE";
-  const puedeReportar = d && ["ACEPTADA", "COMPLETADA"].includes(d.estado);
+  const puedeReportar = d && d.miRol === "RECEPTOR" && ["ACEPTADA", "COMPLETADA"].includes(d.estado);
 
   return (
     <>
@@ -155,7 +155,7 @@ function Contenido() {
 
       {reportando && d && (
         <ModalReporte
-          donacionId={d.id}
+          publicacionId={m.id}
           contraparte={d.contraparte}
           medicamento={m.nombre}
           onCerrar={() => setReportando(false)}

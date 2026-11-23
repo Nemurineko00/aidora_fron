@@ -6,8 +6,7 @@ import { crearReporte } from "@/lib/servicios";
 const TIPOS = ["image/png", "image/jpeg", "image/webp"];
 const MAX_BYTES = 5 * 1024 * 1024;
 
-/** Ventana para reportar a la otra parte de una donación. */
-export default function ModalReporte({ donacionId, contraparte, medicamento, onCerrar, onEnviado }) {
+export default function ModalReporte({ publicacionId, contraparte, medicamento, onCerrar, onEnviado }) {
   const [motivo, setMotivo] = useState("");
   const [imagen, setImagen] = useState(null);
   const [error, setError] = useState("");
@@ -40,7 +39,7 @@ export default function ModalReporte({ donacionId, contraparte, medicamento, onC
     setError("");
     setEnviando(true);
     try {
-      await crearReporte({ donacionId, motivo, imagen });
+      await crearReporte({ publicacionId, motivo, imagen });
       onEnviado();
     } catch (err) {
       setError(err.message);
@@ -59,7 +58,7 @@ export default function ModalReporte({ donacionId, contraparte, medicamento, onC
           id="motivoReporte"
           value={motivo}
           onChange={(e) => setMotivo(e.target.value)}
-          maxLength={1000}
+          maxLength={300}
           required
           placeholder="Ej. El lote es diferente al publicado"
         />
