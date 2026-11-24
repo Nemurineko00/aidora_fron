@@ -108,6 +108,10 @@ function Contenido() {
               <dd>{formatoFecha(m.fechaCaducidad)}</dd>
               <dt>Punto de entrega</dt>
               <dd>{m.puntoEntrega.nombre}</dd>
+              <dt>Dirección</dt>
+              <dd>{m.puntoEntrega.direccion}</dd>
+              <dt>Ubicación</dt>
+              <dd><a href={`https://www.google.com/maps/search?api=1&query=${encodeURIComponent(m.puntoEntrega.direccion)}`} target = "_blank" rel="nooperner noreferrer">Ver en Google Maps</a></dd>
               <dt>Estado</dt>
               <dd>{ETIQUETA_ESTADO[m.estado]}</dd>
 
