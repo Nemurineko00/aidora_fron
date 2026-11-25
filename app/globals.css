@@ -249,7 +249,7 @@ button{
 
 .listaMedicamentos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 16px;
     padding: 20px 20px 20px;
 }
@@ -922,6 +922,37 @@ a.filaONG:hover {
     cursor: not-allowed;
 }
 
+.cantidadSolicitudes{
+    margin-top: 10px;
+    padding: 6px 12px;
+    display: inline-block;
+    background: rgba(34, 66, 81, .15);
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+.linkSolicitudes{
+    display: block;
+    margin-top: 8px;
+    font-weight: 700;
+    color: #224251;
+    text-decoration: underline;
+}
+
+.contenedorSolicitudes{
+    margin-top: 12px;
+    max-height: 250px;
+    overflow: auto;
+    padding-right: 6px;
+}
+
+.sinSolicitudes{
+    margin-top: 10px;
+    font-size: .9rem;
+    opacity: .75;
+}
+
 :root {
     --fondo: #224251;
     --tarjeta: #C1C3CB;
@@ -974,7 +1005,7 @@ a.filaONG:hover {
     margin-top: 8px;
     padding-top: 8px;
     border-top: 1px solid rgba(34, 66, 81, 0.35);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
 }
 .tarjeta { align-items: flex-start; }
 
