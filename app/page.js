@@ -30,21 +30,31 @@ export default function Inicio() {
 
       <section className="descripcion">
         <div className="columnaUno">
-          <h1>Reducir desperdicio</h1> &nbsp; <h1>Conectar esperanza</h1> <br /><br />
-
+          <span className="etiqueta">Sobre Aidora</span>
+          <h2 className="lema">
+          Reducir desperdicio.
+          <span>Conectar esperanza.</span>
+          </h2>
           <p className="parrafo">
             Aidora es una plataforma web y móvil que conecta a personas que
             desean donar medicamentos especializados no utilizados con pacientes
             de enfermedades crónicas que enfrentan desabasto en instituciones
-            públicas en México. Incorporamos validaciones digitales para
-            garantizar que las donaciones sean seguras y legales.
+            públicas en México.
           </p>
-          <br />
+          
           <p className="parrafo">
-            La plataforma prioriza la verificación del Registro Sanitario
-            (COFEPRIS), la fecha de caducidad y la clasificación legal
-            medicamento para asegurar que solo se canalicen fármacos no controlados
-            y en condiciones adecuadas.
+            Incorporamos validaciones digitales para que cada donación sea segura y
+            legal. Verificamos:
+          </p>
+
+          <ul className="verificaciones">
+            <li>Registro Sanitario (COFEPRIS)</li>
+            <li>Fecha de caducidad</li>
+            <li>Clasificación legal del medicamento</li>
+          </ul>
+
+          <p className="parrafo">
+            Así solo se canalizan fármacos no controlados y en condiciones adecuadas.
           </p>
         </div>
 

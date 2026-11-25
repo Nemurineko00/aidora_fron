@@ -318,7 +318,7 @@ button{
 }
 
 .Nuevomediform {
-  width: min(720px, 92%);
+  width: min(760px, 92%);
   margin: 140px auto 40px;
   padding: 2rem 1.4rem 1.4rem;
   background: var(--tarjeta);
@@ -357,7 +357,7 @@ button{
 .Nuevomediform label:not(.btnFoto) {
   display: block;
   margin-bottom: 3px;
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1.3;
 }
@@ -368,14 +368,14 @@ button{
 .Campoentrada input,
 .Nuevomediform select {
   width: 100%;
-  height: 32px;
+  height: 44px;
   margin-bottom: 10px;
   padding: 0 10px;
   background: #fff;
   border: 1px solid var(--borde);
   border-radius: 8px;
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .Campoentrada input:focus,
@@ -390,7 +390,7 @@ button{
   background: var(--rojo);
   color: #fff;
   border-radius: 8px;
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.6;
 }
@@ -419,7 +419,7 @@ button{
   grid-row: 1 / 5;
   margin-top: 1.5rem;    
   margin-bottom: 1.6rem;
-  min-height: 160px;
+  min-height: 220px;
   background: #fff;
   border: 1px solid var(--borde);
   border-radius: 6px;
@@ -428,7 +428,7 @@ button{
   justify-content: center;
   overflow: hidden;
   color: #8a8a8a;
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 .previewFoto img {
@@ -477,7 +477,7 @@ button{
 .btn {
   font: inherit;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 .btn:disabled { opacity: 0.6; cursor: not-allowed; }
@@ -487,7 +487,7 @@ button{
   color: #fff;
   border: none;
   border-radius: 6px;
-  height: 32px;
+  height: 46px;
 }
 
 .Nuevomediform form > .btn-primario {
@@ -1091,3 +1091,59 @@ a.filaONG:hover {
 .fichaAcciones .btnTarjeta { margin: 0; }
 .detalleMedicamento .mensajeError { color: #ff9a9a; margin: 0 0 12px; }
 .detalleMedicamento .mensajeAviso { color: #9ff0c9; margin: 0 0 12px; }
+
+
+
+.descripcion {
+  background: #2d5668;               /* más oscuro: contraste ~5.9:1 */
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  height: auto;
+  padding: 96px max(32px, 8vw);
+}
+.descripcion .columnaUno,
+.descripcion .columnaDos { width: auto; float: none; margin: 0; padding: 0; text-align: left; }
+
+.etiqueta {
+  display: inline-block;
+  font-size: .85rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #50CBE7;
+  margin-bottom: 16px;
+}
+.descripcion .lema {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.15;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+.lema span { display: block; color: #3AC3B5; }
+
+.descripcion .parrafo { font-size: 1.125rem; line-height: 1.7; max-width: 56ch; margin-bottom: 18px; }
+
+.verificaciones { list-style: none; display: grid; gap: 10px; margin-bottom: 18px; }
+.verificaciones li { position: relative; padding-left: 34px; font-size: 1.05rem; }
+.verificaciones li::before {
+  content: "";
+  position: absolute; left: 0; top: 0;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #3AC3B5; color: #224251;
+  font-size: .8rem; font-weight: 700;
+  display: grid; place-items: center;
+}
+
+.descripcion img {
+  border-radius: 20px;
+  border: 1px solid rgba(80, 203, 231, .35);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
+}
+
+@media (max-width: 800px) {
+  .descripcion { grid-template-columns: 1fr; gap: 40px; padding: 64px 24px; }
+}
+
+button, input, select, textarea { font-family: inherit; }
+
