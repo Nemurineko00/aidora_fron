@@ -12,6 +12,7 @@ export default function VistaMisPublicaciones() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
   const [ocupado, setOcupado] = useState(null);
+  const [abierta, setAbierta] = useState(null);
 
   const cargar = useCallback(async () => {
     try {
@@ -78,25 +79,65 @@ export default function VistaMisPublicaciones() {
                 Editar
               </Link>
             )}
-            {m.solicitudes.map((s) => (
-              <div key={s.id} className="solicitud">
-                {s.estado === "SOLICITADA" && (
-                  <>
-                    <p>{s.receptor.usuario} solicitó este medicamento</p>
-                    <div className="tarjetaAcciones">
-                      <button type="button" className="btnTarjeta" disabled={ocupado === s.id} onClick={() => atender(s.id, "aceptar")}>
-                        Aceptar
-                      </button>
-                      <button type="button" className="btnTarjeta secundario" disabled={ocupado === s.id} onClick={() => atender(s.id, "rechazar")}>
-                        Rechazar
-                      </button>
+            {m.solicitudes.length === 0 && (
+              <p className="sinSolicitudes">
+                Sin solicitudes por el momento
+              </p>
+            )}
+            {m.solicitudes.length > 0 && (
+              <>
+                <p className="cantidadSolicitudes">
+                  {m.solicitudes.length} solicitud(es)
+                </p>
+
+                <Link href="#" className="linkSolicitudes" onClick={(e) => {e.preventDefault(); setAbierta( abierta === m.id ? null : m.id);}}>
+                  {abierta === m.id ? "Ocultar Solicitudes" : `Ver solicitudes (${m.solicitudes.length})`}
+                </Link>
+
+                {abierta === m.id && (
+                  <div className="contenedorSolicitudes">
+                    {m.solicitudes.map((s) =>(
+                      <div key = {s.id} className="solicitud">
+
+                        {s.estado === "SOLICITADA" && (
+                          <>
+                            <p>
+                              {s.receptor.usuario} solicito este medicamento
+                            </p>
+
+                            <div className="tarjetaAcciones">
+                              <button type="button" className="btnTarjeta" disabled={ocupado === s.id} onClick={() => atender(s.id, "aceptar")}>
+                              Aceptar
+                              </button>
+
+                              <button type="button" className="btnTarjeta secundario" disabled={ocupado === s.id} onClick={() => atender(s.id, "rechazar")}>
+                                Rechazar
+                              </button>
+                            </div>
+                            </>
+                        )}
+
+                        {s.estado === "ACEPTADA" && (
+                          <p>
+                            Aceptaste la solicitud de {" "}
+                            {s.receptor.usuario}. Falta confirmas la entrega
+                          </p>
+                        )}
+
+                        {s.estado === "COMPLETADA" && (
+                          <p>
+                            Entregado a{" "}
+                            {s.receptor.usuario}
+                          </p>
+                        )}
+
+                        </div>
+                    ))}
+
                     </div>
-                  </>
                 )}
-                {s.estado === "ACEPTADA" && <p>Aceptaste la solicitud de {s.receptor.usuario}. Falta confirmar la entrega.</p>}
-                {s.estado === "COMPLETADA" && <p>Entregado a {s.receptor.usuario}.</p>}
-              </div>
-            ))}
+              </>
+            )}
           </>
         )}
       />
