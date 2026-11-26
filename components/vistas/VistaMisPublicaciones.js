@@ -16,6 +16,12 @@ export default function VistaMisPublicaciones() {
   const [solicitudActiva, setSolicitudActiva] = useState(null);
   const [fechaEntrega, setFechaEntrega] = useState("");
 
+  const manana = new Date();
+
+  manana.setDate(manana.getDate() + 1);
+
+  const fechaMinima = manana.toISOString().split("T")[0];
+
   const cargar = useCallback(async () => {
     try {
       setMedicamentos(await listarMisPublicaciones());
@@ -125,7 +131,7 @@ export default function VistaMisPublicaciones() {
                                     Fecha de entrega
                                   </label>
 
-                                  <input type="date" value={fechaEntrega} min={new Date().toISOString().split("T")[0]} onChange={(e) => setFechaEntrega(e.target.value)}/>
+                                  <input type="date" value={fechaEntrega} min={fechaMinima} onChange={(e) => setFechaEntrega(e.target.value)}/>
                                   
                                   <button type="button" className="btnTarjeta" disabled={!fechaEntrega || ocupado === s.id} onClick={() => atender(s.id, "aceptar", fechaEntrega)}>
                                       Confrimar fecha
