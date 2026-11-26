@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BuscadorMedicamentos from "@/components/buscarMedicamentos";
 import { listarMisPublicaciones, aceptarSolicitud, rechazarSolicitud } from "@/lib/servicios";
-import { ETIQUETA_ESTADO } from "@/lib/formato";
+import { ETIQUETA_ESTADO, formatoFecha } from "@/lib/formato";
 
 export default function VistaMisPublicaciones() {
   const [medicamentos, setMedicamentos] = useState([]);
@@ -145,7 +145,10 @@ export default function VistaMisPublicaciones() {
                         {s.estado === "ACEPTADA" && (
                           <p>
                             Aceptaste la solicitud de {" "}
-                            {s.receptor.usuario}. La fecha de entrega fue programada.
+                            {s.receptor.usuario}.{" "}
+                            {s.fechaEntrega
+                              ? <>Fecha de entrega: <strong>{formatoFecha(s.fechaEntrega)}</strong></>
+                              : "La fecha de entrega fue programada."}
                           </p>
                         )}
 

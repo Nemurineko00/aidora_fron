@@ -129,6 +129,12 @@ function Contenido() {
                       <dd>{formatoFecha(d.aceptadaEn)}</dd>
                     </>
                   )}
+                  {d.fechaEntrega && ["ACEPTADA", "COMPLETADA"].includes(d.estado) && (
+                    <>
+                      <dt>Fecha de entrega</dt>
+                      <dd>{formatoFecha(d.fechaEntrega)}</dd>
+                    </>
+                  )}
                 </>
               )}
             </dl>

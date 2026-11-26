@@ -6,6 +6,7 @@ import Link from "next/link";
 import BuscadorMedicamentos from "@/components/buscarMedicamentos";
 import ModalReporte from "@/components/ModalReporte";
 import { listarMisDonaciones } from "@/lib/servicios";
+import { formatoFecha } from "@/lib/formato";
 
 export default function VistaMisDonaciones() {
   const [donaciones, setDonaciones] = useState([]);
@@ -34,6 +35,7 @@ export default function VistaMisDonaciones() {
     rs: d.medicamento.registroSanitario,
     imagen: d.medicamento.fotoUrl,
     href: `/detPublicacion?id=${d.medicamento.id}&donacion=${d.id}`,
+    detalles: d.estado === "ACEPTADA" && d.fechaEntrega ? [`Fecha de entrega: ${formatoFecha(d.fechaEntrega)}`] : [],
     original: d,
   }));
 

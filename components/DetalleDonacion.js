@@ -116,12 +116,16 @@ export default function DetalleDonacion({ id }) {
 
             <div className="filaFechaHora">
               <div className="campoDonacion">
-                <label htmlFor="fecha">Fecha</label>
+                <label htmlFor="fecha">Fecha de aceptación</label>
                 <input id="fecha" type="text" value={formatoFecha(donacion.aceptadaEn)} readOnly />
               </div>
               <div className="campoDonacion">
                 <label htmlFor="hora">Hora</label>
                 <input id="hora" type="text" value={formatoHora(donacion.aceptadaEn)} readOnly />
+              </div>
+              <div className="campoDonacion campoCompleto">
+                <label htmlFor="fechaEntrega">Fecha de entrega</label>
+                <input id="fechaEntrega" type="text" value={donacion.fechaEntrega ? formatoFecha(donacion.fechaEntrega) : "Sin fecha"} readOnly />
               </div>
             </div>
 

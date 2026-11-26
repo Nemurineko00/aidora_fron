@@ -947,6 +947,10 @@ a.filaONG:hover {
     background: #2BA6DC;
 }
 
+.filaFechaHora .campoCompleto {
+    grid-column: 1 / -1;
+}
+
 .filaFechaHora {
     display: grid;
     grid-template-columns: 1fr 1fr;
