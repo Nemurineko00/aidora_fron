@@ -239,6 +239,11 @@ button{
     background-color: #E0DDE1;
 }
 
+.headerHome nav a.activo {
+    color: #224251;
+    font-weight: bold;
+}
+
 .headerHome.logo, .headerHome h2 {
     color: black;
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BotonCerrarSesion from "@/components/BotonCerrarSesion";
 import { useRouter } from "next/navigation";
 import { obtenerOng, obtenerDonacionOng, actualizarEstadoOng, terminarCiclo as terminarCicloServicio } from "@/lib/servicios";
 import { formatoFecha, formatoHora } from "@/lib/formato";

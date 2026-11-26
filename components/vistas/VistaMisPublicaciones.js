@@ -58,7 +58,7 @@ export default function VistaMisPublicaciones() {
         <nav>
           <Link href="/home">Buscar medicamentos</Link>
           <Link href="/misDonaciones">Mis Donaciones</Link>
-          <Link href="/misPublicaciones">Mis Publicaciones</Link>
+          <Link href="/misPublicaciones" className="activo" aria-current="page">Mis Publicaciones</Link>
           <Link href="/sesion" className="linkPerfil">
             <Image src="/img/perfil.png" alt="Perfil" width={60} height={60} />
           </Link>
