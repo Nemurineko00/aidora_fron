@@ -10,7 +10,7 @@ export default function Inicio() {
         <h2>Aidora</h2>
         <nav>
           <Link href="/login" className="btnSesion">Acceder</Link>
-          <Link href="/registro" className="btnSesion">Iniciar sesión</Link>
+          <Link href="/registro" className="btnSesion">Crear cuenta</Link>
         </nav>
       </header>
 
