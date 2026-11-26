@@ -29,6 +29,7 @@ export default function Registro() {
         apellidoPaterno: datos.apellidoP,
         apellidoMaterno: datos.apellidoM,
         correo: datos.correo,
+        edad: datos.edad,
         password: datos.contrasena,
       });
       router.push("/home");

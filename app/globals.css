@@ -579,8 +579,85 @@ button{
     width: 100%;
 }
 
+.fichaPerfil {
+    width: min(900px, 92%);
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 2rem;
+    background: var(--tarjeta);
+    color: #224251;
+    border-radius: 14px;
+}
+
 .tarjetaPerfil {
-    width: min(500px, 92%);
+    flex: 1 1 320px;
+    max-width: 500px;
+}
+
+.tarjetaPerfil .datosPerfil > p:not(.contenedor) {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.fichaPerfil .contenedor,
+.fichaPerfil .btnRegistrarAyudante {
+    background-color: #fff;
+    height: 34px;
+}
+
+.fichaPerfil .btnRegistrarAyudante {
+    justify-content: space-between;
+}
+
+.formEdad {
+    display: flex;
+    gap: 8px;
+    margin: 0 0 14px;
+}
+
+.formEdad input {
+    flex: 1;
+    min-width: 0;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #50CBE7;
+    border-radius: 6px;
+    font: inherit;
+    font-size: 14px;
+}
+
+.formEdad button {
+    margin: 0;
+    padding: 0 16px;
+    background-color: #224251;
+    color: #E0DDE1;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.fichaPerfil .btnRegistrarAyudante span {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.fichaPerfil .mensajeError {
+    color: #b3261e;
+}
+
+.fotoPerfil {
+    flex: 0 1 260px;
+    display: flex;
+    justify-content: center;
+}
+
+.fotoPerfil .iconoPerfil {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
 }
 
 .secision-ayudante input,
@@ -1168,7 +1245,7 @@ a.filaONG:hover {
 
 
 .descripcion {
-  background: #2d5668;               /* más oscuro: contraste ~5.9:1 */
+  background: #2d5668;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 64px;
@@ -1310,6 +1387,16 @@ button, input, select, textarea { font-family: inherit; }
   .logoLoggin {
     display: none;
   }
+  .mainSesion {
+    padding: 220px 0 110px;
+  }
+  .fichaPerfil {
+    padding: 1.4rem;
+    gap: 20px;
+  }
+  .fotoPerfil {
+    flex-basis: 160px;
+  }
   .columna-login {
     position: relative;
     width: 100%;
@@ -1342,7 +1429,6 @@ button, input, select, textarea { font-family: inherit; }
     bottom: 16px;
   }
 
-  /* --- Paneles del admin y de la ONG: una sola columna --- */
   .panelAdmin,
   .historialColumnas,
   .filaFechaHora {
