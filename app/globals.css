@@ -190,6 +190,7 @@ button{
     right: 0;
     width: 700px;
     height: 100vh; 
+    overflow-y: auto;
     background-color: rgba(69, 96, 108, .97);
     z-index: 5;
     display: flex;
