@@ -62,13 +62,33 @@ button{
     margin-top: 20px;
 }
 
+.login-page {
+    --ancho-panel-login: min(700px, 55vw);
+    min-height: 100vh;
+}
+
 .logoLoggin {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: var(--ancho-panel-login);
     display: flex;
-    padding: 280px;
+    justify-content: center;
+    align-items: center;
     gap: 12px;
+    padding: 40px;
     text-decoration: none;
     color: #E0DDE1;
-    align-items: center;
+}
+
+.logoLoggin img {
+    width: clamp(120px, 18vw, 335px);
+    height: auto;
+}
+
+.logoLoggin .tituloMasGrande {
+    font-size: clamp(48px, 6.5vw, 110px);
 }
 
 .logo {
@@ -188,27 +208,57 @@ button{
     position: fixed;
     top: 0;
     right: 0;
-    width: 700px;
-    height: 100vh; 
+    width: var(--ancho-panel-login, 700px);
+    height: 100vh;
     overflow-y: auto;
     background-color: rgba(69, 96, 108, .97);
     z-index: 5;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
-    padding-top: 40px;
-    padding: 40px;
+    padding: 56px 40px;
     box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
     border-radius: 80px;
     border: 1px solid #50CBE7;
 }
 
+.columna-login > :first-child {
+    margin-top: auto;
+}
+
+.columna-login > :last-child {
+    margin-bottom: auto;
+}
+
+.columna-login .tituloGrande {
+    font-size: clamp(40px, 5vw, 70px);
+}
+
 .columna-login form {
-    margin-top: 20px;
+    margin: 20px auto 0;
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
+}
+
+.columna-login .formulario label + br {
+    display: none;
+}
+
+.columna-login .formulario label {
+    display: block;
+}
+
+.columna-login .formulario small {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    opacity: .85;
+}
+
+.columna-login .formulario p a {
+    margin-left: 6px;
 }
 
 .formulario {
@@ -230,6 +280,7 @@ button{
 .bloqueFromulario {
     margin-top: 10px;
     width: min(420px, 100%);
+    flex-shrink: 0;
 }
 
 .btnSesion {

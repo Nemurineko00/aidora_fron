@@ -59,9 +59,7 @@ export default function DetalleDonacion({ id }) {
             <p>Bienvenido &quot;{ong?.nombre ?? "ONG/HOSPITAL"}&quot;</p>
           </div>
         </div>
-        <Link href="/login" className="cerrarSesionAdmin">
-          Cerrar sesión
-        </Link>
+        <BotonCerrarSesion className="cerrarSesionAdmin" />
       </header>
 
       <main className="mainAdmin">

@@ -29,7 +29,7 @@ export default function Sesion() {
           <Link href="/home">Buscar medicamentos</Link>
           <Link href="/misDonaciones">Mis Donaciones</Link>
           <Link href="/misPublicaciones">Mis Publicaciones</Link>
-          <Link href="/login" className="btnSesion">Cerrar sesión</Link>
+          <BotonCerrarSesion className="btnSesion" />
         </nav>
         <Image src="/img/perfil.png" alt="Mi perfil" width={60} height={60} />
       </header>

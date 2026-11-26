@@ -39,7 +39,7 @@ export default function HomeAdmin() {
             <p>Bienvenido Administrador</p>
           </div>
         </div>
-        <Link href="/login" className="cerrarSesionAdmin">Cerrar sesión</Link>
+        <BotonCerrarSesion className="cerrarSesionAdmin" />
       </header>
 
       <main className="mainAdmin">
