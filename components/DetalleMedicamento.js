@@ -111,7 +111,7 @@ function Contenido() {
               <dt>Dirección</dt>
               <dd>{m.puntoEntrega.direccion}</dd>
               <dt>Ubicación</dt>
-              <dd><a href={`https://maps.google.com/?q=${encodeURIComponent(m.puntoEntrega.direccion)}`} target = "_blank" rel="noopener noreferrer">Ver en Google Maps</a></dd>
+              <dd><a href={`https://maps.google.com/?q=${encodeURIComponent(`${m.puntoEntrega.nombre} ${m.puntoEntrega.direccion}`)}`} target = "_blank" rel="noopener noreferrer">Ver en Google Maps</a></dd>
               <dt>Estado</dt>
               <dd>{ETIQUETA_ESTADO[m.estado]}</dd>
 
