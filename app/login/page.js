@@ -47,7 +47,7 @@ export default function Login() {
 
         <div className="bloqueFromulario">
           <form onSubmit={handleSubmit}>
-            <h2>Iniciar sesion</h2>
+            <h2>Iniciar sesión</h2>
 
             <div className="formulario">
               <label htmlFor="correo">Correo</label><br />
@@ -59,7 +59,7 @@ export default function Login() {
             </div>
 
             <div className="formulario">
-              <p><strong>¿No tienes una cuenta?</strong><Link href="/registro">Registrate</Link></p>
+              <p><strong>¿No tienes una cuenta?</strong><Link href="/registro">Regístrate</Link></p>
             </div>
 
             {error && <p className="mensajeError" role="alert">{error}</p>}

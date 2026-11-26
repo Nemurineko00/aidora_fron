@@ -23,9 +23,9 @@ export default function Inicio() {
           necesitas
         </h1>
         <br /><br />
-        <p>Unete a nuestra comunidad de aidora</p>
+        <p>Únete a nuestra comunidad de aidora</p>
         <br /><br />
-        <Link href="/login" className="IniciarSesion">Iniciar sesion</Link>
+        <Link href="/login" className="IniciarSesion">Iniciar sesión</Link>
       </section>
 
       <section className="descripcion">

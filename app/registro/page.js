@@ -53,7 +53,7 @@ export default function Registro() {
 
         <div className="bloqueFromulario">
           <form onSubmit={handleSubmit}>
-            <h2>Registrate</h2>
+            <h2>Regístrate</h2>
 
             <div className="formulario">
               <label htmlFor="usuario">Nombre de Usuario</label><br />
@@ -84,7 +84,7 @@ export default function Registro() {
               <input type="number" id="edad" min={1} max={120} step={1} value={datos.edad} onChange={cambiar("edad")} required />
             </div>
             <div className="formulario">
-              <p><strong>¿Ya tienes una cuenta?</strong><Link href="/login">Inicia sesion</Link></p>
+              <p><strong>¿Ya tienes una cuenta?</strong><Link href="/login">Inicia sesión</Link></p>
             </div>
 
             {error && <p className="mensajeError" role="alert">{error}</p>}
