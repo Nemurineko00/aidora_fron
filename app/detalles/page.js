@@ -16,9 +16,8 @@ export default function NuevoMedicamento() {
 
   return (
     <>
-      <header className="headerHome">
-        <Image src="/img/logo.png" alt="Aidora" width={80} height={80} />
-        <h2>Aidora</h2>
+      <header className="logo headerHome">
+  <Image src="/img/logo.png" alt="Aidora" width={160} height={80} style={{ height: 80, width: "auto" }} />
         <nav>
           <Link href="/home">Buscar medicamentos</Link>
           <Link href="/misDonaciones">Mis Donaciones</Link>

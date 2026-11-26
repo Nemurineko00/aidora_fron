@@ -58,7 +58,7 @@ export default function VistaHome() {
         <Image src="/img/logo.png" alt="Aidora" width={160} height={80} style={{ height: 80, width: "auto" }} />
         <h2>Aidora</h2>
         <nav>
-          <Link href="/home">Buscar medicamentos</Link>
+          <Link href="/home" className="activo" aria-current="page">Buscar medicamentos</Link>
           <Link href="/misDonaciones">Mis Donaciones</Link>
           <Link href="/misPublicaciones">Mis Publicaciones</Link>
           <Link href="/sesion" className="linkPerfil">

@@ -44,7 +44,7 @@ export default function VistaMisDonaciones() {
         <h2>Aidora</h2>
         <nav>
           <Link href="/home">Buscar medicamentos</Link>
-          <Link href="/misDonaciones">Mis Donaciones</Link>
+          <Link href="/misDonaciones" className="activo" aria-current="page">Mis Donaciones</Link>
           <Link href="/misPublicaciones">Mis Publicaciones</Link>
           <Link href="/sesion" className="linkPerfil">
             <Image src="/img/perfil.png" alt="Perfil" width={60} height={60} />
