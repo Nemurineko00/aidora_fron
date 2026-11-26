@@ -13,6 +13,14 @@ export default function VistaMisPublicaciones() {
   const [error, setError] = useState("");
   const [ocupado, setOcupado] = useState(null);
   const [abierta, setAbierta] = useState(null);
+  const [solicitudActiva, setSolicitudActiva] = useState(null);
+  const [fechaEntrega, setFechaEntrega] = useState("");
+
+  const manana = new Date();
+
+  manana.setDate(manana.getDate() + 1);
+
+  const fechaMinima = manana.toISOString().split("T")[0];
 
   const cargar = useCallback(async () => {
     try {
@@ -28,16 +36,18 @@ export default function VistaMisPublicaciones() {
     cargar();
   }, [cargar]);
 
-  async function atender(solicitudId, accion) {
+  async function atender(solicitudId, accion, fecha = null) {
     setError("");
     setOcupado(solicitudId);
     try {
-      if (accion === "aceptar") await aceptarSolicitud(solicitudId);
+      if (accion === "aceptar") await aceptarSolicitud(solicitudId, fecha);
       else await rechazarSolicitud(solicitudId);
     } catch (e) {
       setError(e.message);
     } finally {
       setOcupado(null);
+      setSolicitudActiva(null);
+      setFechaEntrega("");
       cargar();
     }
   }
@@ -106,7 +116,7 @@ export default function VistaMisPublicaciones() {
                             </p>
 
                             <div className="tarjetaAcciones">
-                              <button type="button" className="btnTarjeta" disabled={ocupado === s.id} onClick={() => atender(s.id, "aceptar")}>
+                              <button type="button" className="btnTarjeta" disabled={ocupado === s.id} onClick={() => {setSolicitudActiva( solicitudActiva === s.id ? null : s.id); setFechaEntrega("");} }>
                               Aceptar
                               </button>
 
@@ -114,13 +124,28 @@ export default function VistaMisPublicaciones() {
                                 Rechazar
                               </button>
                             </div>
+                            {
+                              solicitudActiva === s.id && (
+                                <div className="fechaEntregaBox">
+                                  <label>
+                                    Fecha de entrega
+                                  </label>
+
+                                  <input type="date" value={fechaEntrega} min={fechaMinima} onChange={(e) => setFechaEntrega(e.target.value)}/>
+                                  
+                                  <button type="button" className="btnTarjeta" disabled={!fechaEntrega || ocupado === s.id} onClick={() => atender(s.id, "aceptar", fechaEntrega)}>
+                                      Confrimar fecha
+                                  </button>
+                                </div>
+                              )
+                            }
                             </>
                         )}
 
                         {s.estado === "ACEPTADA" && (
                           <p>
                             Aceptaste la solicitud de {" "}
-                            {s.receptor.usuario}. Falta confirmas la entrega
+                            {s.receptor.usuario}. La fecha de entrega fue programada.
                           </p>
                         )}
 
