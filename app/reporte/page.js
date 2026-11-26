@@ -113,8 +113,8 @@ function Formulario() {
 
   return (
     <>
-      <header className="headerHome">
-  <Image src="/img/logo.png" alt="Aidora" width={80} height={80} />
+      <header className="logo headerHome">
+  <Image src="/img/logo.png" alt="Aidora" width={160} height={80} style={{ height: 80, width: "auto" }} />
         <h2>Aidora</h2>
         <nav>
           <Link href="/home">Buscar medicamentos</Link>
